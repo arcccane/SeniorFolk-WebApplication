@@ -1,0 +1,252 @@
+﻿@page
+@model Seniorfolk.Pages.RetrieveHelpModel
+@{
+    ViewData["Title"] = "Retrieve Help";
+}
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Requests</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+
+<div class="faq">
+    <div class="faq-container">
+        <h2>Help Requests</h2>
+        <div class="accordion">
+
+            @{ if (Model.allRequests != null)
+                {
+                    @foreach (var request in Model.allRequests.AsEnumerable().Reverse())
+                    {
+                        <div class="accordion-item">
+                            <button id="accordion-button-1" aria-expanded="false">
+                                <span class="accordion-title">@request.Message</span>
+                                <span class="icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="accordion-content">
+                                <p>
+                                    <span>@request.CreatedOn</span> <br />
+                                    <span>User Id:</span> @request.UserId <br />
+                                    <span>Email:</span> @request.Email <br />
+                                    <span>Mobile:</span> @request.Mobile <br />
+                                </p>
+                                <form method="post">
+                                    <button id="deleteBtn" asp-page-handler="Delete" asp-route-id="@request.HelpId" type="submit" class="btnn btn btn-danger " onclick="return confirm('Are you sure you want to delete this request?')">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+
+<script>
+
+    const items = document.querySelectorAll('.accordion button');
+
+    function toggleAccordion() {
+        const itemToggle = this.getAttribute('aria-expanded');
+
+        for (i = 0; i < items.length; i++) {
+            items[i].setAttribute('aria-expanded', 'false');
+        }
+
+        if (itemToggle == 'false') {
+            this.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    items.forEach((item) => item.addEventListener('click', toggleAccordion));
+
+    mybutton = document.getElementById("myBtn");
+
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+</script>
+
+<style>
+    @@import url('https://fonts.googleapis.com/css?family=Hind:300,400&display=swap');
+
+    .faq {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Hind', sans-serif;
+        color: black;
+        display: flex;
+        min-height: 100vh;
+    }
+
+        .faq::before,
+        .faq::after {
+            box-sizing: border-box;
+        }
+
+    .faq-container {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .accordion .accordion-item {
+        border-bottom: 1px solid grey;
+    }
+
+        .accordion .accordion-item button[aria-expanded='true'] {
+            border-bottom: 1px solid #03b5d2;
+        }
+
+    .accordion button {
+        position: relative;
+        display: block;
+        text-align: left;
+        width: 100%;
+        padding: 1em 0;
+        color: black;
+        font-size: 1.15rem;
+        font-weight: 400;
+        border: none;
+        background: none;
+        outline: none;
+    }
+
+        .accordion button:hover,
+        .accordion button:focus {
+            cursor: pointer;
+            color: #03b5d2;
+        }
+
+            .accordion button:hover::after,
+            .accordion button:focus::after {
+                cursor: pointer;
+                color: #03b5d2;
+                border: 1px solid #03b5d2;
+            }
+
+        .accordion button .accordion-title {
+            padding: 1em 1.5em 1em 0;
+        }
+
+        .accordion button .icon {
+            display: inline-block;
+            position: absolute;
+            top: 18px;
+            right: 0;
+            width: 22px;
+            height: 22px;
+            border: 1px solid;
+            border-radius: 22px;
+        }
+
+            .accordion button .icon::before {
+                display: block;
+                position: absolute;
+                content: '';
+                top: 9px;
+                left: 5px;
+                width: 10px;
+                height: 2px;
+                background: currentColor;
+            }
+
+            .accordion button .icon::after {
+                display: block;
+                position: absolute;
+                content: '';
+                top: 5px;
+                left: 9px;
+                width: 2px;
+                height: 10px;
+                background: currentColor;
+            }
+
+        .accordion button[aria-expanded='true'] {
+            color: #03b5d2;
+        }
+
+            .accordion button[aria-expanded='true'] .icon::after {
+                width: 0;
+            }
+
+            .accordion button[aria-expanded='true'] + .accordion-content {
+                opacity: 1;
+                max-height: 9em;
+                transition: all 200ms linear;
+                will-change: opacity, max-height;
+            }
+
+    .accordion .accordion-content {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 200ms linear, max-height 200ms linear;
+        will-change: opacity, max-height;
+    }
+
+        .accordion .accordion-content p {
+            font-size: 1rem;
+            font-weight: 300;
+            margin: 1.5em 0;
+            display: inline-block;
+        }
+
+        .accordion .accordion-content form {
+            display: inline-block;
+            float: right;
+            margin-top: 80px;
+        }
+
+    #deleteBtn {
+        background-color: crimson;
+        border: none;
+        padding: 10px;
+        color: #fff;
+    }
+
+        #deleteBtn:hover {
+            background-color: rgba(64,153,255,.7);
+        }
+
+    p span {
+        font-weight: bold;
+    }
+
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: rgba(64,153,255,.7);
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 18px;
+    }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
+</style>

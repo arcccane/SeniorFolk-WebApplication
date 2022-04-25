@@ -1,0 +1,65 @@
+﻿@page
+@model Seniorfolk.Pages.EditVolunteerModel
+@{
+    ViewData["Title"] = "Voluntary Details";
+}
+
+<h1>Edit Voluntary Detail</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MyVolunteer.Id" />
+
+            <div class="form-group">
+                <label asp-for="MyVolunteer.OrganisationName" class="control-label"></label>
+                <input asp-for="MyVolunteer.OrganisationName" class="form-control" />
+                <span asp-validation-for="MyVolunteer.OrganisationName" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <label asp-for="MyVolunteer.StartTime" class="control-label"></label>
+                    <input type="time" asp-for="MyVolunteer.StartTime" class="form-control form-control-lg" />
+                    <span asp-validation-for="MyVolunteer.StartTime" class="text-danger"></span>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <label asp-for="MyVolunteer.EndTime" class="control-label"></label>
+                    <input type="time" asp-for="MyVolunteer.EndTime" class="form-control form-control-lg" />
+                    <span asp-validation-for="MyVolunteer.EndTime" class="text-danger"></span>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MyVolunteer.Address" class="control-label"></label>
+                <input asp-for="MyVolunteer.Address" class="form-control" />
+                <span asp-validation-for="MyVolunteer.Address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MyVolunteer.Description" class="control-label"></label>
+                <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" asp-for="MyVolunteer.Description"></textarea>
+                <span asp-validation-for="MyVolunteer.Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />&nbsp;
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                @*<input type="submit" value="Delete" class="btn btn-danger" />&nbsp;*@
+                <a asp-page="./RetrieveVolunteerAdmin" class="btn btn-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+

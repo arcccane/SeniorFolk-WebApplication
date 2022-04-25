@@ -1,0 +1,49 @@
+﻿@page "{id}"
+@using Seniorfolk.Models;
+@model Seniorfolk.Pages.ViewAccountDetailsModel
+@{
+    ViewData["Title"] = "ViewAccountDetailsDetail";
+}
+
+<h1>Account Detail</h1> 
+
+<form method="post">
+
+    <div>
+        <label class="col-sm-2 col-form-label">User ID:</label>
+        <label>@Model.MyUser.Id</label>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Full Name:</label>
+        <label>@Model.MyUser.Name</label>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Gender:</label>
+        <label>@Model.MyUser.Gender</label>
+
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Birth Date:</label>
+        <label>@Model.MyUser.DOB</label>
+    </div>
+
+
+    <div>
+        <label class="col-sm-2 col-form-label">Email:</label>
+        <label>@Model.MyUser.Email</label>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Password:</label>
+        <label>@Model.MyUser.Password</label>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Mobile:</label>
+        <label>@Model.MyUser.Mobile</label>
+    </div>
+    <div class="col-sm-10">
+        <a asp-page="./RetrieveAccounts" class="btn btn-primary">Back to List</a>
+        <input id="btn1" type="submit" value="Delete" class="btn btn-danger" />
+    </div>
+</form>

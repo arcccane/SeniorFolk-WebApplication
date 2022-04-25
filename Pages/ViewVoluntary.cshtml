@@ -1,0 +1,60 @@
+﻿@page
+@model Seniorfolk.Pages.ViewVoluntaryModel
+@{
+    ViewData["Title"] = "ViewVoluntary";
+}
+
+<style>
+    h1 {
+        text-align: center;
+        padding-bottom: 25px;
+    }
+    body{
+        align-content:center;
+    }
+
+    .btn {
+        align-content: center;
+    }
+
+
+</style>
+
+<h1>Voluntary Work Details</h1>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h5>@Model.MyVolunteer.OrganisationName</h5>
+                <p class="mb-0">@Model.MyVolunteer.Description</p>
+            </div><!-- / project-info-box -->
+            <br />
+
+            <div class="project-info-box">
+                <p><b>Work Code:</b> @Model.MyVolunteer.Id</p>
+                <p><b>Opening Hours:</b> @Model.MyVolunteer.StartTime - @Model.MyVolunteer.EndTime </p>
+                <p><b>Address:</b> @Model.MyVolunteer.Address </p>
+            </div><!-- / project-info-box -->
+
+            <div class="project-info-box mt-0 mb-0">
+                <p class="mb-0">
+                    <a href="#x" class="btn btn-xs btn-facebook btn-circle btn-icon mr-5 mb-0"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#x" class="btn btn-xs btn-twitter btn-circle btn-icon mr-5 mb-0"><i class="fab fa-twitter"></i></a>
+                    <a href="#x" class="btn btn-xs btn-pinterest btn-circle btn-icon mr-5 mb-0"><i class="fab fa-instagram"></i></a>
+                    <a href="#x" class="btn btn-xs btn-linkedin btn-circle btn-icon mr-5 mb-0"><i class="fab fa-linkedin-in"></i></a>
+                </p>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+
+        <div class="col-md-7">
+            <img src="~/images/detail.jpg" alt="project-image" class="rounded">
+        </div><!-- / column -->
+        <br />
+    </div>
+    <div id="btn" class="col-sm-10">
+        <a asp-page="/RetrieveVolunteers" class="btn btn-primary">Back to List</a>
+        <a asp-page="/Application" asp-route-id="@Model.MyVolunteer.Id" asp-route-name="@Model.MyVolunteer.OrganisationName" class="btn btn-primary">Apply for this!</a>
+    </div>
+</div>

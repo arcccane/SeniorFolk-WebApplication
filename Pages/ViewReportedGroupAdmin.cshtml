@@ -1,0 +1,50 @@
+﻿@page
+@model Seniorfolk.Pages.ViewReportedGroupAdminModel
+@{
+}
+@{
+    ViewData["Title"] = "Retrieve Reported Group";
+}
+
+<div class="text-center">
+    <h3>List of Reported Groups</h3>
+</div>
+<br />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Report ID</th>
+            <th>Reporter ID</th>
+            <th>Reported Group ID</th>
+            <th>Report Reason</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.allreportedgroups != null)
+            {
+                @foreach (var item in Model.allreportedgroups)
+                {
+
+
+                    <tr>
+                        <td />
+                        <td>@item.UserId</td>
+                        <td>@item.ReportedGrpid</td>
+                        <td>@item.ReportGrpReason</td>
+                        <td>
+                            <br />
+                            <form method="post">
+                                <input type="hidden" asp-for="Id" value="@item.ReportedNo" />
+                                <button type="submit">Delete</button>
+                            </form>
+
+                        </td>
+
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

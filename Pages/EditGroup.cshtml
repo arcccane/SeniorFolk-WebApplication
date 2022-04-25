@@ -1,0 +1,61 @@
+﻿@page "(id)"
+@model Seniorfolk.Pages.EditGroupModel
+@{
+}
+<h1>Edit Group</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CreateGroup.GroupId" />
+            <br>
+
+            <div class="form-group">
+                <label asp-for="CreateGroup.GroupId" class="control-label"></label>
+                <input asp-for="CreateGroup.GroupId" class="form-control" />
+                <span asp-validation-for="CreateGroup.GroupId" class="text-danger"></span>
+            </div>
+            <br>
+
+            <div class="form-group">
+                <label asp-for="CreateGroup.GroupName" class="control-label"></label>
+                <input asp-for="CreateGroup.GroupName" class="form-control" />
+                <span asp-validation-for="CreateGroup.GroupName" class="text-danger"></span>
+            </div>
+            <br>
+
+            <div class="form-group">
+                <label asp-for="CreateGroup.Description" class="control-label"></label>
+                <input asp-for="CreateGroup.Description" class="form-control" />
+                <span asp-validation-for="CreateGroup.Description" class="text-danger"></span>
+            </div>
+            <br>
+
+            <div class="form-group">
+                <label asp-for="CreateGroup.User" class="control-label"></label>
+                <input asp-for="CreateGroup.User" class="form-control" />
+                <span asp-validation-for="CreateGroup.User" class="text-danger"></span>
+            </div>
+            <br>
+
+
+            <div class="form-group">
+                <label asp-for="CreateGroup.Hashtag" class="control-label"></label>
+                <input asp-for="CreateGroup.Hashtag" class="form-control" />
+                <span asp-validation-for="CreateGroup.Hashtag" class="text-danger"></span>
+            </div>
+            <br>
+
+            <div class="col-sm-10">
+                <input type="submit" value="Save" class="btn btn-primary" />&nbsp;
+                <a asp-page="./RetrieveGroup" class="btn btn-primary">Back To List</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,48 @@
+﻿@page
+@model Seniorfolk.Pages.VSurveyModel
+@{
+    ViewData["Title"] = "View Survey Feedback";
+}
+
+<style>
+    button{
+        border: none;
+        background: none;
+    }
+</style>
+
+<h1>View Survey Feedback</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Survey ID</th>
+            <th>Title</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.allsurveys != null)
+            {
+                @foreach (var item in Model.allsurveys)
+                {
+                    <tr>
+                        <td>@item.Surveyid</td>
+                        <td>@item.Title</td>
+                        <td></td>
+                        <td>
+                            <a asp-page="/VDSurvey" asp-route-id="@item.Surveyid">View Feedback</a>
+                        </td>
+                        <td>
+                            <form method="post">
+                                <input type="hidden" asp-for="Id" value="@item.Surveyid" />
+                                <button type="submit">Delete Feedback</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+
+        }
+    </tbody>
+</table>

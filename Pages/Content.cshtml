@@ -1,0 +1,477 @@
+﻿@page
+@model Seniorfolk.Pages.ContentModel
+@{
+    ViewData["Title"] = "Content";
+}
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content</title>
+    <script src="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmonitor/1.0.13/scrollMonitor.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+</head>
+
+<div class="container-holder">
+    <div class="content-container">
+        <ul class="posts">
+            <li class="post">
+                <div class="post-content">
+                    <header class="content"><p>Looking to make some friends!</p></header><img src="/images/defaultcontent.jpeg" alt="content" />
+                    <footer class="content">
+                        <div class="ld-buttons">
+                            <button class="btn" id="green"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>
+                            <button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="comment">
+                            <a asp-page="Comments" class="icon-button commentBtn">
+                                <i class="far fa-comments"></i>
+                                <span></span>
+                            </a>
+                        </div>
+                        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+                        <div class="socials">
+                            <a href="https://facebook.com/user"><i class="fa fa-facebook"></i></a>
+                            <a href="https://instgram.com/user"><i class="fa fa-instagram"></i></a>
+                            <a href="https://twitter.com/user"><i class="fa fa-twitter"></i></a>
+                            <a href="https://skype.com/user"><i class="fa fa-skype"></i></a>
+                        </div>
+                    </footer>
+                </div><a class="post-avatar" title="User" href=""></a>
+            </li>
+            <li class="post">
+                <div class="post-content">
+                    <header class="content"><p>Hello SeniorFolk!</p></header><img src="/images/managing-family-finances-hero.jpg" alt="content" />
+                    <footer class="content">
+                        <div class="ld-buttons">
+                            <button class="btn" id="green"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>
+                            <button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="comment">
+                            <a asp-page="Comments" class="icon-button commentBtn">
+                                <i class="far fa-comments"></i>
+                                <span></span>
+                            </a>
+                        </div>
+                        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+                        <div class="socials">
+                            <a href="https://facebook.com/user"><i class="fa fa-facebook"></i></a>
+                            <a href="https://instgram.com/user"><i class="fa fa-instagram"></i></a>
+                            <a href="https://twitter.com/user"><i class="fa fa-twitter"></i></a>
+                            <a href="https://skype.com/user"><i class="fa fa-skype"></i></a>
+                        </div>
+                    </footer>
+                </div><a class="post-avatar" title="User" href=""></a>
+            </li>
+            @{ if (Model.allContent != null)
+                {
+                    @foreach (var content in Model.allContent.AsEnumerable().Reverse())
+                    {
+                        <li class="post">
+                            <div class="post-content">
+                                <header class="content"><p>@content.Title</p></header><img src="~/contents/@content.FileName" alt="content" />
+                                <footer class="content">
+                                    <div class="ld-buttons">
+                                        <button class="btn" id="green"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>
+                                        <button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>
+                                    </div>
+                                    <div class="comment">
+                                        <a asp-page="Comments" asp-route-id="@content.ContentId" class="icon-button commentBtn">
+                                            <i class="far fa-comments"></i>
+                                            <span></span>
+                                        </a>
+                                    </div>
+                                    <div class="socials">
+                                        <a href="https://facebook.com/user"><i class="fa fa-facebook"></i></a>
+                                        <a href="https://instgram.com/user"><i class="fa fa-instagram"></i></a>
+                                        <a href="https://twitter.com/user"><i class="fa fa-twitter"></i></a>
+                                        <a href="https://skype.com/user"><i class="fa fa-skype"></i></a>
+                                    </div>
+                                </footer>
+                            </div><a class="post-avatar" title="@content.UserId" href=""></a>
+                        </li>
+                    }
+                }
+            }
+        </ul>
+        <p class="no-posts">Sorry... there are no more posts to show right now.</p>
+    </div>
+
+    <div class="settings-container">
+        <table>
+            <tr>
+                <td><a asp-page="CreateContent"><input type="button" class="btn btn-primary" value="Create Post" /></a></td>
+            </tr>
+            <tr>
+                <td><a asp-page="Content"><input type="button" class="btn btn-primary" value="All Posts" /></a></td>
+            </tr>
+            <tr>
+                <td><a asp-page="ViewContent"><input type="button" class="btn btn-primary" value="Your Posts" /></a></td>
+            </tr>
+            <tr>
+                <td><a asp-page="News"><input type="button" class="btn btn-primary" value="News" /></a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+
+<style>
+
+    header.content p {
+        color: #a2a2a2;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    footer.content {
+        width: 100%;
+        display: flex;
+    }
+
+        footer.content > div {
+            flex: 1;
+        }
+
+        footer.content a {
+            margin-right: 10px;
+        }
+
+    .socials {
+        text-align: center;
+        padding: 20px 0 0 10px;
+    }
+
+        .socials a {
+            width: 10px;
+            height: 10px;
+        }
+
+    .container-holder a:hover {
+        color: #666;
+    }
+
+    .container-holder {
+        width: 100%;
+        height: auto;
+        display: inline-block;
+    }
+
+    .content-container {
+        font: bold 13px Helvetica, Arial, sans-serif;
+        max-width: 650px;
+        width: 90%;
+        margin: 0;
+        float: left;
+    }
+
+    .settings-container {
+        margin-top: 20px;
+        margin-left: 65%;
+        max-width: 600px;
+        height: 510px;
+        border: 5px solid #9f5317;
+        border-radius: 5px;
+        background-color: antiquewhite;
+    }
+
+        .settings-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .settings-container td {
+            text-align: center;
+            padding: 10px;
+        }
+
+            .settings-container td a input {
+                width: 100%;
+                height: 100%;
+                padding: 10px;
+            }
+
+    @@media only screen and (max-width: 1200px) {
+        .content-container {
+            margin-top: 300px;
+            position: center;
+        }
+
+        .settings-container {
+            position: absolute;
+            max-height: 275px;
+            max-width: 550px;
+            width: 550px;
+            right: 15%;
+            margin: 20px;
+        }
+    }
+
+    .no-posts {
+        padding: 50px 10px 30px 100px;
+        text-align: center;
+        color: black;
+    }
+
+    .posts {
+        list-style: none;
+        margin: 20px auto;
+        padding: 0;
+        width: 100%;
+    }
+
+        .posts .post {
+            margin-top: 20px;
+            margin-left: 100px;
+            position: relative;
+        }
+
+        .posts .post-avatar {
+            background: #fff url('http://on.be.net/1Noq5Sf') center/100%;
+            height: 80px;
+            width: 80px;
+            border-radius: 4px;
+            position: absolute;
+            left: -100px;
+            top: 0;
+        }
+
+            .posts .post-avatar.post-avatar--fixed {
+                position: fixed;
+                left: 35%;
+                top: 20px;
+                margin-left: -325px;
+            }
+
+            .posts .post-avatar.post-avatar--absolute {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                margin-left: -100px;
+                top: auto;
+            }
+
+        .posts .post-content {
+            background: #fff;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+            .posts .post-content img {
+                width: 100%;
+            }
+
+            .posts .post-content header.content, .posts .post-content footer.content {
+                padding: 15px 20px;
+            }
+
+    .ld-buttons {
+        padding-top: 5px;
+    }
+
+        .ld-buttons button {
+            cursor: pointer;
+            outline: 0;
+            color: #AAA;
+        }
+
+        .ld-buttons .btn:focus {
+            outline: none;
+        }
+
+    .green {
+        color: green;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .comment {
+        text-align: center;
+    }
+
+    /* Wrapper */
+    .icon-button {
+        background-color: white;
+        border-radius: 20px;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 1.3rem;
+        height: 3.0rem;
+        line-height: 3.0rem;
+        margin: 0 5px;
+        position: relative;
+        text-align: center;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 3.0rem;
+    }
+
+        /* Circle */
+        .icon-button span {
+            border-radius: 0;
+            display: block;
+            height: 0;
+            left: 50%;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+            width: 0;
+        }
+
+        .icon-button:hover span {
+            width: 3.0rem;
+            height: 3.0rem;
+            border-radius: 20px;
+            margin: -1.5rem;
+        }
+
+        /* Icons */
+        .icon-button i {
+            background: none;
+            color: white;
+            height: 3.0rem;
+            left: 0;
+            line-height: 3.0rem;
+            position: absolute;
+            top: 0;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+            width: 3.0rem;
+            z-index: 10;
+        }
+
+    .commentBtn {
+        background-color: rgba(64,153,255,.7);
+    }
+
+        .commentBtn span {
+            background-color: rgba(64,153,255,.7);
+        }
+
+    .icon-button:hover {
+        color: white;
+    }
+
+    @@media all and (max-width: 680px) {
+        .icon-button {
+            border-radius: 2.0rem;
+            font-size: 1.0rem;
+            height: 2.0rem;
+            line-height: 2.0rem;
+            width: 2.0rem;
+        }
+
+            .icon-button:hover span {
+                width: 2.0rem;
+                height: 2.0rem;
+                border-radius: 2.0rem;
+                margin: -1.0rem;
+            }
+            /* Icons */
+            .icon-button i {
+                height: 2.0rem;
+                line-height: 2.0rem;
+                width: 2.0rem;
+            }
+    }
+
+    #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: rgba(64,153,255,.7);
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 18px;
+    }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
+</style>
+
+<script>
+
+    $('.post-avatar').each(function () {
+        var avatar = $(this),
+            avatarWatcher = scrollMonitor.create(avatar.parent(), {
+                top: 20,
+                bottom: -avatar.height() - 20
+            });
+
+        avatarWatcher.stateChange(function () {
+            if (avatarWatcher.isInViewport) {
+                if (avatarWatcher.isInViewport && avatarWatcher.isAboveViewport) {
+                    avatar.removeClass('post-avatar--absolute').addClass('post-avatar--fixed');
+                } else if (!avatarWatcher.isAboveViewport) {
+                    avatar.removeClass('post-avatar--absolute').removeClass('post-avatar--fixed');
+                }
+            } else {
+                avatar.removeClass('post-avatar--fixed').addClass('post-avatar--absolute');
+            }
+        });
+    });
+
+    var btn1 = document.querySelector('#green');
+    var btn2 = document.querySelector('#red');
+
+    btn1.addEventListener('click', function () {
+
+        if (btn2.classList.contains('red')) {
+            btn2.classList.remove('red');
+        }
+        this.classList.toggle('green');
+
+    });
+
+    btn2.addEventListener('click', function () {
+
+        if (btn1.classList.contains('green')) {
+            btn1.classList.remove('green');
+        }
+        this.classList.toggle('red');
+
+    });
+
+    mybutton = document.getElementById("myBtn");
+
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+</script>
+
+

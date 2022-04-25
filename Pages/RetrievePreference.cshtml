@@ -1,0 +1,52 @@
+﻿@page
+@model Seniorfolk.Pages.RetrievePreferenceModel
+@{
+}
+@{
+    ViewData["Title"] = "Retrieve Preference";
+}
+<a class="nav-link text-dark" asp-area="" asp-page="/CreateGroup">Create Group</a>
+
+<div class="text-center">
+    <h3>List of Groups</h3>
+</div>
+<br />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Preference ID</th>
+            <th>Created By</th>
+            <th>Preference Tag</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.Allpreference != null)
+            {
+                @foreach (var item in Model.Allpreference)
+                {
+
+
+                    <tr>
+                        <td>@item.PreferenceId</td>
+                        <td>@item.UserId</td>
+                        <td>@item.PreferenceTag</td>
+
+
+                        <td>
+                            <a asp-page="/EditGroup" asp-route-id="@item.PreferenceId">Edit</a>
+                            <br />
+                            <form method="post">
+                                <input type="hidden" asp-for="Id" value="@item.PreferenceId" />
+                                <button type="submit">Delete</button>
+                            </form>
+
+                        </td>
+
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

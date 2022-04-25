@@ -1,0 +1,92 @@
+﻿@page
+@model Seniorfolk.Pages.CreateGroupModel
+@{
+}
+@{
+    ViewData["Title"] = "Create Group";
+}
+
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create Group</h3>
+                        <form method="post">
+
+                            <div><label class="text-danger">@Model.AlertMessage</label></div>
+                            <div asp-validation-summary="All" class="text-danger"></div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <label class="form-label">Group ID:</label>
+                                        <input asp-for="CreateGroup.GroupId" class="form-control form-control-lg" />
+                                        <span asp-validation-for="CreateGroup.GroupId" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                                
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <label class="form-label">Group Name:</label>
+                                        <input asp-for="CreateGroup.GroupName" class="form-control form-control-lg" />
+                                        <span asp-validation-for="CreateGroup.GroupName" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                                    <div class="form-outline">
+                                        <label class="form-label">Group Description:</label>
+                                        <input asp-for="CreateGroup.Description" class="form-control form-control-lg" />
+                                        <span asp-validation-for="CreateGroup.Description" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+                                    <div class="form-outline">
+                                        <label class="form-label">Created By:</label>
+                                        <input asp-for="CreateGroup.User" class="form-control form-control-lg" />
+                                        <span asp-validation-for="CreateGroup.User" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                        <label class="form-label">Hashtags:</label>
+                                        <input asp-for="CreateGroup.Hashtag" class="form-control form-control-lg" />
+                                        <span asp-validation-for="CreateGroup.Hashtag" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <input id="create" type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

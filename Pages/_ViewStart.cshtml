@@ -1,0 +1,18 @@
+﻿@{
+    var routeUrl = ViewContext.RouteData.Values["Page"].ToString();
+    //you can put pages' name into pages
+    var pages = new List<string> { "AdminHome", "CreateVolunteer", "RetrieveVolunteerAdmin", "EditVolunteer", "RetrieveApplication", "ViewApplication", "RetrieveAccounts", "ViewAccountDetails", "VSurvey", "RetrieveHelp", "RetrieveGroupAdmin","RetrievePreferenceAdmin", "ViewReportedGroupAdmin", "ViewReportedUserAdmin"};
+    //if routeUrl contains any of pages,the page will use _Layout as Layout page,the other pages will use _Layout1 ad Layout page
+
+    if (pages.Any(routeUrl.Contains))
+    {
+        Layout = "_LayoutAdmin";
+    }
+
+    else
+    {
+        Layout = "_Layout";
+    }
+
+
+}

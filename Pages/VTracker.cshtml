@@ -1,0 +1,58 @@
+﻿@page
+@model Seniorfolk.Pages.VTrackerModel
+@{
+    ViewData["Title"] = "View Fitness Log";
+}
+
+<style>
+    button{
+        border:none;
+        background:none;
+    }
+</style>
+
+<h1>View Fitness Log</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <!--<th>Date</th>-->
+            <!--<th>Start Time</th>
+            <th>End Time</th>
+            <th>Activity</th>
+            <th>Remarks</th>-->
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.alltrackers != null)
+            {
+                @foreach (var item in Model.alltrackers)
+                {
+                    <tr>
+                        <td>@item.Idtracker</td>
+                        <td>@item.WorkoutTitle</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a asp-page="/VDTracker" asp-route-id="@item.Idtracker">View Log</a>
+                            
+                        </td>
+                        <td> 
+                            <a asp-page="/ETracker" asp-route-id="@item.Idtracker">Edit Log</a> 
+                        </td>
+                        <td>
+                            <form method="post">
+                                <input type="hidden" asp-for="Id" value="@item.Idtracker" />
+                                <button type="submit">Delete Log</button>
+                                <!--<a asp-for="Id" asp-route-id="@item.Idtracker">Delete Log</a>-->
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>

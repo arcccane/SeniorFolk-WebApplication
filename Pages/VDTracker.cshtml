@@ -1,0 +1,72 @@
+﻿@page
+@model Seniorfolk.Pages.VDTrackerModel
+@{
+    ViewData["Title"] = "View Fitness Log Details";
+}
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Fitness Log Details</h3>
+                        <form method="post">
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Title:</label>
+                                        <label class="form-label">@Model.MyTracker.WorkoutTitle</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Start Time:</label>
+                                        <label class="form-label">@Model.MyTracker.StartTime</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">End Time:</label>
+                                        <label class="form-label">@Model.MyTracker.EndTime</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Activity:</label>
+                                        <label class="form-label">@Model.MyTracker.Activities</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Remarks:</label>
+                                        <label class="form-label">@Model.MyTracker.Remarks</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <input id="btnn" type="submit" value="back" class="btn btn-primary" />
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

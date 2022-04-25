@@ -1,0 +1,89 @@
+﻿@page
+@model Seniorfolk.Pages.LoginModel
+@{
+    
+    ViewData["Title"] = "Login";
+}
+
+
+@*<h3>Login Form</h3>
+@Model.Msg
+<form method="post" asp-page="Login">
+    <table>
+
+        <tr>
+            <td>User ID</td>
+            <td><input type="text" asp-for="@Model.Id" /></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" asp-for="@Model.Password" /></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input type="submit" value="Login" /></td>
+        </tr>
+
+    </table>
+
+</form>*@
+
+
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="shadow-2-strong card-registration" style="border-radius: 1rem;">
+                        <div class="card-body p-4 p-md-5 text-center">
+                            <form method="post" asp-page="Login">
+                                <div class="mb-md-5 mt-md-4 pb-5">
+
+
+                                    <img src="images/Seniorfolklogo.png" alt="Login Photo" width="200" height="180" />
+                                    <h3>Welcome</h3>
+                                    <p class="text-black-50 mb-5">Please enter your email and password!</p>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label">User Id</label>
+                                        <input type="text" asp-for="@Model.Id" class="form-control form-control-lg"/>
+                                        
+                                        @*<input asp-for="@Model.Id" class="form-control form-control-lg" />
+        <span asp-validation-for="LoginUser.Id" class="text-danger"></span>*@
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" asp-for="@Model.Password" class="form-control form-control-lg" />
+                                        @*<input asp-for="@Model.Password" class="form-control form-control-lg" type="password" />
+                                        <span asp-validation-for="LoginUser.Password" class="text-danger"></span>*@
+                                    </div>
+
+                                    <p class="small mb-5 pb-lg-2"><a class="text-black-50" href="#!">Forgot password?</a></p>
+
+                                    <button class="btn btn-primary" type="submit">Login</button>
+
+                                    @Model.Msg
+
+                                    @*<button class="btn btn-primary" type="submit"><a href="../Index">Login</a></button>*@
+
+
+                                </div>
+                                <p class="mb-0">Don't have an account? <a href="../Register" class="text-black-50 fw-bold">Sign Up</a></p>
+
+                                </form>
+
+
+
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+

@@ -1,0 +1,52 @@
+﻿@page
+@model Seniorfolk.Pages.VHealthModel
+@{
+    ViewData["Title"] = "View Health Log";
+}
+
+<style>
+    button {
+        border: none;
+        background: none;
+    }
+</style>
+
+<h1>View Health Log</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ if (Model.allhealths != null)
+            {
+                @foreach (var item in Model.allhealths)
+                {
+                    <tr>
+                        <td>@item.Idhealth</td>
+                        <td>@item.DateHealthLog</td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a asp-page="/VDHealth" asp-route-id="@item.Idhealth">View Log</a>
+                        </td>
+                        <td>
+                            <a asp-page="/EHealth" asp-route-id="@item.Idhealth">Edit Log</a>
+                        </td>
+                        <td>
+                            <form method="post">
+                                <input type="hidden" asp-for="Id" value="@item.Idhealth"/>
+                                <button type="submit">Delete Log</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+
+        }
+    </tbody>
+</table>

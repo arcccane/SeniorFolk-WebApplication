@@ -1,0 +1,248 @@
+﻿@page
+@model Seniorfolk.Pages.VDHealthModel
+@{
+    ViewData["Title"] = "Health Log Details";
+}
+
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+</style>
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3>Health Log Details</h3>
+                        <form method="post">
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Date:</label>
+                                        <label class="form-label">@Model.MyHealth.DateHealthLog</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">BMI:</label>
+                                        <label class="form-label">@Model.MyHealth.Bmi</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4>Blood Pressure:</h4>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Systolic BP (mmHg):</label>
+                                        <label class="form-label">@Model.MyHealth.SystolicBp</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Diastolic BP (mmHg):</label>
+                                        <label class="form-label">@Model.MyHealth.DiastolicBp</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Beats Per Minute (B/min):</label>
+                                        <label class="form-label">@Model.MyHealth.BeatsPm</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4>Blood Sugar Levels:</h4>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Before Breakfast (mmol/L):</label>
+                                        <label class="form-label">@Model.MyHealth.BeforeBreakfast</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">After Breakfast (mmol/L):</label>
+                                        <label class="form-label">@Model.MyHealth.AfterBreakfast</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Before Lunch (mmol/L):</label>
+                                        <label class="form-label">@Model.MyHealth.BeforeLunch</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">After Lunch (mmol/L):</label>
+                                        <label class="form-label">@Model.MyHealth.AfterLunch</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">Before Dinner (mmol/L):</label>
+                                        <label class="form-label">@Model.MyHealth.BeforeDinner</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label class="form-label">After Dinner (mmol/L):</label>
+                                        <label class="form-label">@Model.MyHealth.AfterDinner</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <input id="vdH" type="submit" value="Back" class="btn btn-primary" />
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="card-body p-4 p-md-5">
+                    <h3>Analysation for Blood Pressure:</h3>
+                    <br />
+                    <h4>Positives:</h4>
+                    <p>@Model.AnalyseSBP</p>
+                    <p>@Model.AnalyseDBP</p>
+                    <p></p>
+                    <br />
+                    <h4>Negatives:</h4>
+                    <p>@Model.AnalyseSBPbad</p>
+                    <p>@Model.AnalyseDBPbad</p>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="card-body p-4 p-md-5">
+                    <h3>Analysation for Blood Sugar (Before):</h3>
+                    <br />
+                    <h4>Positives:</h4>
+                    <p>@Model.AnalyseBB</p>
+                    <p>@Model.AnalyseBL</p>
+                    <p>@Model.AnalyseBD</p>
+                    <p></p>
+                    <br />
+                    <h4>Negatives:</h4>
+                    <p>@Model.AnalyseBBbad</p>
+                    <p>@Model.AnalyseBLbad</p>
+                    <p>@Model.AnalyseBDbad</p>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="card-body p-4 p-md-5">
+                    <h3>Analysation for Blood Sugar (After):</h3>
+                    <br />
+                    <h4>Positives:</h4>
+                    <p>@Model.AnalyseAB</p>
+                    <p>@Model.AnalyseAL</p>
+                    <p>@Model.AnalyseAD</p>
+                    <p></p>
+                    <br />
+                    <h4>Negatives:</h4>
+                    <p>@Model.AnalyseABbad</p>
+                    <p>@Model.AnalyseALbad</p>
+                    <p>@Model.AnalyseADbad</p>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="card-body p-4 p-md-5">
+                    <h3>Recommendations:</h3>
+                    <br />
+                    <h4>BMI:</h4>
+                    <img src="~/images/bmi.png" width="525" height="301" class="center" />
+                    <br />
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus orci tortor, dictum vitae est et, viverra venenatis ex. Nunc feugiat leo sed cursus posuere. Fusce bibendum leo eu ullamcorper ornare. Aenean eget accumsan ligula, ut blandit nisl. Cras id odio lobortis, pulvinar justo vel, sagittis mauris. Phasellus eget lacus id.
+                    </p>
+                    <br />
+
+                    <h4>Exercises:</h4>
+                    <img src="~/images/runsenior.jpg" width="525" height="301" class="center" />
+                    <br />
+                    <p>Physical Activity Guidelines recommend that adults and seniors get 150 minutes a week of moderate-intensity activity such as brisk walking, or 75 minutes of vigorous aerobic activity such as jogging. This is in addition to strength-training activities two days per week. In other words, going for a brisk walk for 30 minutes, five days a week and doing tai chi twice a week is sufficient to meet the recommendations.</p>
+                    <br />
+
+                    <h4>Blood Pressure Levels:</h4>
+                    <img src="~/images/bpl.png" width="525" height="301" class="center" />
+                    <br />
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus orci tortor, dictum vitae est et, viverra venenatis ex. Nunc feugiat leo sed cursus posuere. Fusce bibendum leo eu ullamcorper ornare. Aenean eget accumsan ligula, ut blandit nisl. Cras id odio lobortis, pulvinar justo vel, sagittis mauris. Phasellus eget lacus id.
+                    </p>
+                    <br />
+
+                    <h4>Blood Sugar Levels:</h4>
+                    <img src="~/images/bsl.png" width="525" height="301" class="center" />
+                    <br />
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus orci tortor, dictum vitae est et, viverra venenatis ex. Nunc feugiat leo sed cursus posuere. Fusce bibendum leo eu ullamcorper ornare. Aenean eget accumsan ligula, ut blandit nisl. Cras id odio lobortis, pulvinar justo vel, sagittis mauris. Phasellus eget lacus id.
+                    </p>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

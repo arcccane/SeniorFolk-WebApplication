@@ -1,0 +1,65 @@
+﻿@page
+@model Seniorfolk.Pages.RetrieveApplicationModel
+@{
+    ViewData["Title"] = "RetrieveApplication";
+}
+
+<div class="text-center">
+
+    <h3>Application submitted</h3>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.allapplications[0].Name)</th>
+            <th>@Html.DisplayNameFor(model => model.allapplications[0].Gender)</th>
+            <th>@Html.DisplayNameFor(model => model.allapplications[0].Email)</th>
+            <th>@Html.DisplayNameFor(model => model.allapplications[0].Mobile)</th>
+            <th>Preferred Date</th>
+            <th></th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            if (Model.allapplications != null)
+            {
+                @foreach (var item in Model.allapplications)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+
+                        <td>@item.Gender</td>
+
+                        <td>@item.Email</td>
+
+                        <td>@item.Mobile</td>
+
+                        <td>@item.Date</td>
+
+
+
+                        <td>
+
+                            <a asp-page="/ViewApplication" asp-route-id="@item.Id">View</a>
+                            @*<button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm">Delete</button>*@
+                            @*<a type="submit" value="Delete" asp-page="/RetrieveApplication" asp-route-id="@item.Id"> Delete </a>*@
+
+
+                        </td>
+
+                    </tr>
+                }
+            }
+
+        }
+
+
+
+
+
+
+    </tbody>
+</table>
